@@ -2,6 +2,8 @@ import argparse
 from aldi import Main as AldiMain
 from albertson import Main as AlbertMain
 from metro import Main as MetroMain
+from MongoLib import MongoLib
+import datetime
 
 
 parser = argparse.ArgumentParser(prog='tool',formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=550, width=500),description="Retailer Framework")
@@ -17,7 +19,7 @@ parser.add_argument('-u', '--url', dest='url',help='Input url')
 
 args, extra_args = parser.parse_known_args()
 
-scrap_result = None
+scrap_result = {'status': False,'message': 'Invalid parameters'}
 
 if __name__ == "__main__":
 
@@ -48,4 +50,4 @@ if __name__ == "__main__":
     else:
         scrap_result = {'status': False,'message': 'Invalid Retail Name'}
 
-print(scrap_result)
+MongoLib().get_collection('product_module_scheduledtask').update_one({'uid': task_id},{'$set': {'last_run_at': datetime.datetime.now(),'status': 'Completed: ' + scrap_result['message'] if scrap_result['status'] else 'Failed: ' + scrap_result['message']}})
