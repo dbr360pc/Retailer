@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY . /app
 
-# Install required OS packages for Playwright
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     wget \
@@ -22,19 +21,16 @@ RUN apt-get update && \
     libu2f-udev \
     libvulkan1 \
     fonts-liberation \
+    fonts-dejavu-core \
+    fonts-unifont \
+    libgdk-pixbuf-xlib-2.0-0 \
     libjpeg62-turbo \
     libwebp-dev \
-    ttf-ubuntu-font-family \
     xdg-utils \
     libappindicator3-1 && \
     rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and install Python dependencies
 RUN pip install --upgrade pip && \
     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-# Install Playwright and browsers
-RUN pip install playwright && \
-    playwright install chromium firefox --with-deps
-
-CMD ["python", "deploy.py"]
+RUN pip install playwright && playwright install chromium firefox
