@@ -1,8 +1,8 @@
 version: '3.8'
 services:
-  deploy:
+  retailer-app:
     build: .
-    container_name: Retailer-deploy
+    container_name: retailer-app
     volumes:
       - .:/app
     working_dir: /app
