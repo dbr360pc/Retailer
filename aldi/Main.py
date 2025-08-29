@@ -1,5 +1,5 @@
-from CommonLib import WeeklyLib,ProductsLib
-from Retailer.MongoLib import MongoLib
+from aldi.CommonLib import WeeklyLib,ProductsLib
+from MongoLib import MongoLib
 import time
 
 

@@ -306,7 +306,7 @@ class CommonLib:
                         }
                         result_data.append(each_obj)
 
-                return {'status': True, 'data': result_data}
+                return {'status': True,'message':'Data has been processed.','data': result_data}
 
             except Exception as e:
                 retries += 1

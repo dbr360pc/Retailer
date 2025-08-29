@@ -1,5 +1,5 @@
 from metro.CommonLib import CommonLib
-from Retailer.MongoLib import MongoLib
+from MongoLib import MongoLib
 
 def getProductsData(retail_url):
     

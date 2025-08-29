@@ -17,6 +17,8 @@ parser.add_argument('-u', '--url', dest='url',help='Input url')
 
 args, extra_args = parser.parse_known_args()
 
+scrap_result = None
+
 if __name__ == "__main__":
 
     task_id,retail_name,scraper_type,retail_url = args.task_id,args.retail,args.scraper,args.url

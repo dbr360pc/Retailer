@@ -1,5 +1,5 @@
-from CommonLib import ProductsLib,WeeklyLib
-from Retailer.MongoLib import MongoLib
+from albertson.CommonLib import ProductsLib,WeeklyLib
+from MongoLib import MongoLib
 
 import time
 
