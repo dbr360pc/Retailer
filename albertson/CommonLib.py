@@ -23,6 +23,8 @@ class WeeklyLib:
 
         options = Options()
         options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--auto-open-devtools-for-tabs")
         options.add_argument("--ignore-certificate-errors")
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
