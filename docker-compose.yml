@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  deploy:
+    build: .
+    container_name: Retailer-deploy
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["bash", "-c", "python deploy.py"]
+    environment:
+      - PYTHONUNBUFFERED=1
