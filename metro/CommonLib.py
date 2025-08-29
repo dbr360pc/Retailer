@@ -177,8 +177,6 @@ class CommonLib:
     def __init__(self,url=None):
 
         self.product_url = url
-        if not self.product_url:
-            return {'status': False, 'message': 'Product URL not found'}
 
 
     def fetchHtml(self,url,product_id,product_name):
@@ -306,6 +304,8 @@ class CommonLib:
                         }
                         result_data.append(each_obj)
 
+                print(f"Total products found : {len(result_data)}")
+
                 return {'status': True,'message':'Data has been processed.','data': result_data}
 
             except Exception as e:
@@ -360,11 +360,17 @@ class CommonLib:
     
     def PhaseTwo(self):
 
+        print("PhaseOne started")
+
         all_products_result = self.PhaseOne(self.product_url)
         if not all_products_result['status']:
             return {'status': False, 'message': all_products_result['message']}
 
         all_products_data = all_products_result['data']
+
+        # all_products_data = all_products_result['data'][:5]
+
+        print("PhaseTwo started")
 
         results = []
         with ThreadPoolExecutor(max_workers=NO_OF_THREADS) as executor:
