@@ -50,5 +50,5 @@ if __name__ == "__main__":
     else:
         scrap_result = {'status': False,'message': 'Invalid Retail Name'}
 
-if MongoLib().get_collection('product_module_scheduledtask').find_one({'uid': task_id}):
-    MongoLib().get_collection('product_module_scheduledtask').update_one({'uid': task_id},{'$set': {'last_run_at': datetime.datetime.now(),'status': 'Completed: ' + scrap_result['message'] if scrap_result['status'] else 'Failed: ' + scrap_result['message']}})
+if MongoLib().get_collection('product_module_scheduledtask').find_one({'uid': int(task_id)}):
+    MongoLib().get_collection('product_module_scheduledtask').update_one({'uid': int(task_id)},{'$set': {'last_run_at': datetime.datetime.now(),'status': 'Completed: ' + scrap_result['message'] if scrap_result['status'] else 'Failed: ' + scrap_result['message']}})
